@@ -1,2 +1,7 @@
 output/**/work/
 output/**/*.mp4
+output/**/*.wav
+output/**/*.png
+.env
+__pycache__/
+output/**/timeline.json

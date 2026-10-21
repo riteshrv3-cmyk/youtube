@@ -1,0 +1,21 @@
+{
+  "voice": "Puck",
+  "style": "Read this in natural Hinglish (Hindi-English mix) with an Indian accent, like an energetic, friendly young Indian YouTuber. Fast, punchy, confident:",
+  "scenes": [
+    {"kind": "hook", "head": "30 SEC RESUME",
+     "say": "Resume banane mein ghanton lag jaate hain? Bhai, ab sirf tees second mein banega!",
+     "caption": "Resume banane mein ghanton lag jaate hain? Bhai, ab sirf 30 second mein banega!"},
+    {"kind": "bullets", "head": "STEP 1",
+     "say": "Step one: apna experience chhote-chhote bullet points mein likho. Bas itna.",
+     "caption": "Step 1: apna experience chhote-chhote bullet points mein likho. Bas itna."},
+    {"kind": "prompt", "head": "STEP 2",
+     "say": "Step two: ye prompt copy karo, aur ChatGPT mein paste kar do.",
+     "caption": "Step 2: ye prompt copy karo, aur ChatGPT mein paste kar do."},
+    {"kind": "resume", "head": "ATS FRIENDLY",
+     "say": "Aur boom! AI tumhare points ko ek professional, A T S friendly resume mein badal dega.",
+     "caption": "Aur boom! AI tumhare points ko ek professional, ATS-friendly resume mein badal dega."},
+    {"kind": "cta", "head": "FREE PROMPTS",
+     "say": "Aise dus free prompts chahiye? Link pinned comment mein hai. Follow karna mat bhoolna!",
+     "caption": "Aise 10 FREE prompts chahiye? Link pinned comment mein hai. Follow karna mat bhoolna!"}
+  ]
+}

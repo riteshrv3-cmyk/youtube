@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: #07070f; font-family: Inter, sans-serif; }
+  #stage { position: absolute; inset: 0; overflow: hidden; }
+  .blob { position: absolute; border-radius: 50%; filter: blur(120px); opacity: .75; }
+  #grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 60px 60px; }
+  #brand { position: absolute; top: 70px; width: 100%; text-align: center; color: #fff; font-weight: 800;
+           font-size: 38px; letter-spacing: 6px; opacity: .85; }
+  #brand b { color: #ffcc00; }
+  #head { position: absolute; top: 150px; left: 50%; background: #ffcc00; color: #000; font-weight: 900;
+          font-size: 88px; padding: 14px 44px; border-radius: 28px; white-space: nowrap;
+          box-shadow: 0 16px 60px rgba(255,204,0,.35); }
+  #panel { position: absolute; top: 330px; left: 70px; width: 940px; height: 700px; }
+  .card { position: absolute; inset: 0; border-radius: 40px; background: rgba(22,22,40,.82);
+          border: 3px solid rgba(255,255,255,.12); box-shadow: 0 30px 80px rgba(0,0,0,.5); padding: 56px; color: #fff; }
+  #cap { position: absolute; top: 1060px; left: 60px; width: 960px; text-align: center; font-weight: 900;
+         font-size: 66px; line-height: 1.18; color: #fff; text-shadow: 0 6px 0 #000, 0 0 30px rgba(0,0,0,.8); }
+  #cap span { display: inline-block; margin: 0 8px; }
+  #cap .on { color: #ffcc00; }
+  #mascot { position: absolute; left: 50%; top: 1250px; width: 600px; height: 660px; margin-left: -300px; transform-origin: 50% 100%; }
+  #disc { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); white-space: nowrap; background: rgba(0,0,0,.55); padding: 6px 18px; border-radius: 14px; color: rgba(255,255,255,.7); font-size: 24px; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="blob" id="b1" style="width:900px;height:900px;background:#00a6c7;"></div>
+  <div class="blob" id="b2" style="width:800px;height:800px;background:#ff8a00;"></div>
+  <div class="blob" id="b3" style="width:600px;height:600px;background:#7b2cff;"></div>
+  <div id="grid"></div>
+  <div id="brand">AI WALA <b>HINGLISH</b></div>
+  <div id="head"></div>
+  <div id="panel"></div>
+  <div id="cap"></div>
+  <svg id="mascot" viewBox="0 0 400 440">
+    <defs>
+      <linearGradient id="hood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd23a"/><stop offset="1" stop-color="#f0a800"/></linearGradient>
+      <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d79b6c"/><stop offset="1" stop-color="#c0835a"/></linearGradient>
+    </defs>
+    <g id="body">
+      <!-- hoodie -->
+      <path d="M40 440 C40 350 100 315 200 315 C300 315 360 350 360 440 Z" fill="url(#hood)"/>
+      <path d="M140 322 C160 360 240 360 260 322 C240 335 160 335 140 322 Z" fill="#d18f00"/>
+      <rect x="168" y="350" width="6" height="55" rx="3" fill="#222"/><rect x="226" y="350" width="6" height="55" rx="3" fill="#222"/>
+      <circle cx="171" cy="408" r="6" fill="#222"/><circle cx="229" cy="408" r="6" fill="#222"/>
+      <text x="200" y="430" text-anchor="middle" font-family="Inter" font-weight="900" font-size="26" fill="#1a1a1a">AI</text>
+      <!-- neck -->
+      <rect x="172" y="270" width="56" height="58" rx="20" fill="#b9784f"/>
+    </g>
+    <g id="headg">
+      <!-- ears -->
+      <ellipse cx="98" cy="185" rx="18" ry="28" fill="#c58659"/><ellipse cx="302" cy="185" rx="18" ry="28" fill="#c58659"/>
+      <!-- face -->
+      <path d="M100 150 C100 75 150 45 200 45 C250 45 300 75 300 150 L300 200 C300 262 255 300 200 300 C145 300 100 262 100 200 Z" fill="url(#skin)"/>
+      <!-- stubble -->
+      <path d="M118 215 C130 270 170 295 200 295 C230 295 270 270 282 215 C270 250 240 275 200 275 C160 275 130 250 118 215 Z" fill="#7a4e33" opacity=".28"/>
+      <!-- hair -->
+      <path d="M92 160 C80 70 140 18 210 22 C275 25 320 70 310 160 C300 120 285 100 262 92 C240 110 200 112 170 100 C150 112 120 118 108 160 Z" fill="#141414"/>
+      <path d="M150 40 C190 0 270 10 296 60 C260 40 210 40 175 62 Z" fill="#232323"/>
+      <!-- brows -->
+      <rect id="browL" x="128" y="138" width="54" height="11" rx="5" fill="#141414"/>
+      <rect id="browR" x="218" y="138" width="54" height="11" rx="5" fill="#141414"/>
+      <!-- eyes -->
+      <g id="eyes">
+        <ellipse cx="155" cy="175" rx="22" ry="17" fill="#fff"/><ellipse cx="245" cy="175" rx="22" ry="17" fill="#fff"/>
+        <circle id="pL" cx="157" cy="176" r="10" fill="#2a1a10"/><circle id="pR" cx="247" cy="176" r="10" fill="#2a1a10"/>
+        <circle cx="160" cy="172" r="3.5" fill="#fff"/><circle cx="250" cy="172" r="3.5" fill="#fff"/>
+      </g>
+      <rect id="lidL" x="130" y="156" width="50" height="0" fill="#c98d60"/>
+      <rect id="lidR" x="220" y="156" width="50" height="0" fill="#c98d60"/>
+      <!-- nose -->
+      <path d="M196 190 C192 212 188 222 200 226 C212 222 208 212 204 190" fill="none" stroke="#9c623d" stroke-width="5" stroke-linecap="round"/>
+      <!-- mouth -->
+      <g id="mouth" transform="translate(200 252)">
+        <path id="mouthOpen" d="" fill="#5a1d1d"/>
+        <path id="teeth" d="" fill="#fff"/>
+        <path id="smile" d="M-34 -4 C-18 12 18 12 34 -4" fill="none" stroke="#5a1d1d" stroke-width="7" stroke-linecap="round"/>
+      </g>
+    </g>
+  </svg>
+  <div id="disc">AI-generated character • tool tutorial • results may vary</div>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const ease = x => 1 - Math.pow(1 - clamp(x, 0, 1), 3);
+const back = x => { x = clamp(x, 0, 1); const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+let TL = null, lastScene = -1;
+
+const PROMPT = "Act as a professional resume writer. Turn my bullet points into an ATS-friendly resume for a [role] job. Use action verbs, numbers and a 2-line summary. My points: [paste here]";
+
+function panelHTML(kind) {
+  if (kind === 'hook') return `<div class="card" style="text-align:center">
+      <div style="font-size:150px;font-weight:900;margin-top:40px">Resume</div>
+      <div id="clock" class="mono" style="font-size:120px;color:#ffcc00;font-weight:700;margin-top:30px">60:00</div>
+      <div style="font-size:44px;opacity:.8;margin-top:24px">1 ghanta &nbsp;→&nbsp; 30 sec</div></div>`;
+  if (kind === 'bullets') return `<div class="card">${['2 saal sales intern','Excel + Canva expert','50+ clients handle kiye','Team lead, college fest']
+      .map((b, i) => `<div class="it" style="font-size:58px;font-weight:800;margin:30px 0;opacity:0"><span style="color:#ffcc00">●</span> ${b}</div>`).join('')}</div>`;
+  if (kind === 'prompt') return `<div class="card" style="background:rgba(14,14,24,.92)">
+      <div style="font-size:40px;color:#9aa;margin-bottom:30px">● ● ● &nbsp; ChatGPT</div>
+      <div id="typed" class="mono" style="font-size:42px;line-height:1.45;color:#7dffb0"></div></div>`;
+  if (kind === 'resume') return `<div class="card" style="background:#f6f6fa;color:#14141c;border-color:#fff">
+      <div style="font-size:66px;font-weight:900">RAHUL SHARMA</div>
+      <div style="font-size:40px;color:#667;margin:8px 0 40px">Sales &amp; Marketing Associate</div>
+      ${['Summary','Experience','Skills','ATS keywords'].map(s => `<div class="it" style="font-size:56px;font-weight:800;margin:22px 0;opacity:0"><span style="color:#00a86b">✔</span> ${s}</div>`).join('')}</div>`;
+  if (kind === 'cta') return `<div class="card" style="text-align:center">
+      <div id="ten" style="font-size:300px;font-weight:900;color:#ffcc00;line-height:1.1">10</div>
+      <div style="font-size:64px;font-weight:900">FREE AI PROMPTS</div>
+      <div id="arrow" style="font-size:90px;margin-top:20px">⬇</div></div>`;
+}
+
+function render(t) {
+  // background drift
+  $('b1').style.transform = `translate(${-250 + 120 * Math.sin(t * .4)}px, ${100 + 80 * Math.cos(t * .3)}px)`;
+  $('b2').style.transform = `translate(${450 + 100 * Math.cos(t * .35)}px, ${1000 + 90 * Math.sin(t * .45)}px)`;
+  $('b3').style.transform = `translate(${300 + 160 * Math.sin(t * .25)}px, ${500 + 120 * Math.sin(t * .5)}px)`;
+  $('grid').style.backgroundPosition = `0 ${t * 20}px`;
+
+  const si = Math.max(0, TL.scenes.findIndex(s => t < s.end) === -1 ? TL.scenes.length - 1 : TL.scenes.findIndex(s => t < s.end));
+  const sc = TL.scenes[si], lt = t - sc.start, dur = sc.end - sc.start;
+  if (si !== lastScene) { $('panel').innerHTML = panelHTML(sc.kind); $('head').textContent = sc.head; lastScene = si; }
+
+  // headline + panel entrance
+  const hp = back(lt / .35);
+  $('head').style.transform = `translateX(-50%) scale(${.6 + .4 * hp}) rotate(${(1 - hp) * -6}deg)`;
+  $('head').style.opacity = clamp(lt / .15, 0, 1);
+  const pp = ease(lt / .4);
+  $('panel').style.transform = `translateY(${(1 - pp) * 80}px) scale(${.94 + .06 * pp})`;
+  $('panel').style.opacity = pp;
+
+  // per-kind animation
+  const prog = clamp(lt / (dur - .3), 0, 1);
+  if (sc.kind === 'hook') {
+    const secs = Math.round(3600 - (3600 - 30) * ease(prog * 1.3));
+    $('clock').textContent = `${String(Math.floor(secs / 60)).padStart(2, '0')}:${String(secs % 60).padStart(2, '0')}`;
+  }
+  if (sc.kind === 'bullets' || sc.kind === 'resume') {
+    document.querySelectorAll('.it').forEach((el, i) => {
+      const p = back((lt - .35 - i * dur / 5.5) / .3);
+      el.style.opacity = clamp(p, 0, 1); el.style.transform = `translateX(${(1 - p) * -60}px)`;
+    });
+  }
+  if (sc.kind === 'prompt') {
+    const n = Math.floor(PROMPT.length * clamp((lt - .3) / (dur * .8), 0, 1));
+    $('typed').innerHTML = PROMPT.slice(0, n) + (Math.floor(t * 3) % 2 ? '▌' : '&nbsp;');
+  }
+  if (sc.kind === 'cta') {
+    $('ten').style.transform = `scale(${1 + .06 * Math.sin(t * 6)})`;
+    $('arrow').style.transform = `translateY(${18 * Math.abs(Math.sin(t * 4))}px)`;
+  }
+
+  // captions: show a ~6-word window, highlight current word
+  const ws = sc.words; let cur = 0;
+  ws.forEach((w, i) => { if (t >= w[1]) cur = i; });
+  const s0 = Math.floor(cur / 6) * 6;
+  $('cap').innerHTML = ws.slice(s0, s0 + 6).map((w, i) => `<span class="${s0 + i === cur ? 'on' : ''}">${w[0]}</span>`).join(' ');
+
+  // mascot: lip sync, blink, bob
+  const f = Math.min(TL.mouth.length - 1, Math.floor(t * TL.fps));
+  const m = TL.mouth[f] || 0;
+  const h = 4 + 34 * m, w = 30 + 8 * m;
+  $('mouthOpen').setAttribute('d', m > .02 ? `M${-w} -6 C${-w} ${h} ${w} ${h} ${w} -6 C${w / 2} 0 ${-w / 2} 0 ${-w} -6 Z` : '');
+  $('teeth').setAttribute('d', m > .25 ? `M${-w + 8} -5 C${-w / 2} 2 ${w / 2} 2 ${w - 8} -5 L${w - 10} 2 C${w / 2} 8 ${-w / 2} 8 ${-w + 10} 2 Z` : '');
+  $('smile').style.opacity = m > .02 ? 0 : 1;
+  const blinkPhase = (t % 3.4);
+  const lid = blinkPhase < .14 ? Math.sin(blinkPhase / .14 * Math.PI) * 38 : 0;
+  ['lidL', 'lidR'].forEach(id => $(id).setAttribute('height', lid));
+  const brow = -6 * m - (sc.kind === 'resume' && lt < .8 ? 8 : 0);
+  ['browL', 'browR'].forEach(id => $(id).setAttribute('transform', `translate(0 ${brow})`));
+  const look = 4 * Math.sin(t * .9);
+  $('pL').setAttribute('cx', 157 + look); $('pR').setAttribute('cx', 247 + look);
+  $('headg').setAttribute('transform', `rotate(${3 * Math.sin(t * 1.7) + 4 * m * Math.sin(t * 9)} 200 290) translate(0 ${-6 * m})`);
+  const enter = back(t / .5);
+  $('mascot').style.transform = `translateY(${(1 - enter) * 400}px) scale(${1 + .015 * Math.sin(t * 2.2)})`;
+}
+window.setup = tl => { TL = tl; lastScene = -1; };
+window.render = render;
+</script>
+</body>
+</html>
